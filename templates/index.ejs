@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="en-US">
+    <head>
+        <% include header.ejs %>
+    </head>
+
+    <body>
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1>Take Quick Notes</h1>
+                <form>
+                    <div class="form-group">
+                    <textarea class="form-control status-box" rows="2" placeholder="What's on your mind?"></textarea>
+                    </div>
+                </form>
+
+                <div class="button-group pull-right">
+                    <p class="counter">140</p>
+                    <a href="#" class="btn btn-primary">Post</a>
+                </div>
+
+                <ul class="posts">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Add the index.js script -->
+        <script type="text/javascript" src="/jsfiles/index.js"></script>
+    </body>
+</html>
