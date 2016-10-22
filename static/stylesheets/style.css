@@ -1,0 +1,45 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    color: #404040;
+    background-color: #eee;
+}
+
+.jumbotron {
+    background: #9fa8a3;
+    color: #173e43;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.container {
+    width: 620px;
+}
+
+.button-group {
+    margin-bottom: 20px;
+}
+
+.counter {
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.posts {
+    clear: both;
+    list-style: lower-alpha;
+    padding-left: 0;
+    width: 100%;
+}
+
+.posts li {
+    background-color: #eef;
+    border: 1px solid #d8d8d8;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}

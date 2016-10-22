@@ -7,22 +7,21 @@
 
     <body>
         <div class="jumbotron text-center">
-            <div class="container">
-                <h1>Take Quick Notes</h1>
-                <form>
-                    <div class="form-group">
-                    <textarea class="form-control status-box" rows="2" placeholder="What's on your mind?"></textarea>
-                    </div>
-                </form>
+            <h1>Take Quick Notes</h1>
+        </div>
 
-                <div class="button-group pull-right">
-                    <p class="counter">140</p>
-                    <a href="#" class="btn btn-primary">Post</a>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                <textarea class="form-control notes-box" rows="1" placeholder="Write your quick short note and press enter to save ..." autofocus></textarea>
                 </div>
+            </form>
+        </div>
 
-                <ul class="posts">
-                </ul>
-            </div>
+        <div class="container">
+            <h3>Saved Notes</h3>
+            <p id="no-saved-notes">No notes saved yet ...</p>
+            <ul class="posts"></ul>
         </div>
 
         <!-- Add the index.js script -->
