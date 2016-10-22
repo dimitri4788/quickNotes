@@ -1,0 +1,32 @@
+{
+    "name": "quicknotes",
+    "version": "1.0.0",
+    "description": "An application to take quick notes written in JavaScript (Node.js and Express.js)",
+    "author": "Deep Aggarwal <deep.uiuc@gmail.com>",
+    "engines": {
+        "node": "4.6.0",
+        "npm": "2.15.9"
+    },
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js"
+    },
+    "dependencies": {
+        "ejs": "2.4.1",
+        "express": "4.13.3",
+        "serve-favicon": "2.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/deep4788/quickNotes"
+    },
+    "keywords": [
+        "node.js",
+        "express.js",
+        "quick",
+        "notes",
+        "javascript",
+        "ejs"
+    ],
+    "license": "MIT"
+}
