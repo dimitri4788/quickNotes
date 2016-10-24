@@ -1,5 +1,5 @@
-//Keep track of how many total notes are there
-numberOfNotes = 0;
+//Keep track of previous id
+previousId = 0;
 
 //Display saved notes from the localStorage on the page
 function displaySavedNotesFromLocalStorage() {
@@ -13,29 +13,26 @@ function displaySavedNotesFromLocalStorage() {
             var id = localStorage.key(i);
             var body = localStorage.getItem(localStorage.key(i));
 
+            //Set the previousId to the maximum id among all the saved ids
+            previousId = Math.max(previousId, id);
+
             //Create a new <li> element, add text post to it and prepend it to the ul list
             var newLiElement = $('<li>').text(body);
             newLiElement.attr('id', id);
             newLiElement.prependTo('.posts');
         }
-
-        //Set the number of total notes to localStorage length
-        numberOfNotes = localStorage.length;
+        previousId++;
     }
-
-    console.log("numberOfNotes: " + numberOfNotes);
 }
 
 //Save the note to localStorage
 function saveNoteToLocalStorage(id, body) {
-    localStorage.setItem(numberOfNotes, body);
-    console.log("numberOfNotes: " + numberOfNotes);
+    localStorage.setItem(id, body);
 }
 
 //Delete the note from localStorage
 function deleteNoteFromLocalStorage(id) {
     localStorage.removeItem(id);
-    console.log("numberOfNotes: " + numberOfNotes);
 }
 
 //Function to run after the document is loaded
@@ -53,20 +50,18 @@ function main() {
 
             //Create a new <li> element, add text post to it and prepend it to the ul list
             var newLiElement = $('<li>').text(post);
-            newLiElement.attr('id', numberOfNotes);
+            newLiElement.attr('id', previousId);
             newLiElement.prependTo('.posts');
 
             //Add the new note in the localStorage
-            saveNoteToLocalStorage(numberOfNotes, post);
-            numberOfNotes++;
+            saveNoteToLocalStorage(previousId, post);
+            previousId++;
 
             //Make the notes box empty again
             $('.notes-box').val('');
 
             //Put focus back on the notes box
             $('.notes-box').focus();
-
-            console.log("numberOfNotes: " + numberOfNotes);
         }
     });
 
@@ -77,7 +72,6 @@ function main() {
 
         //Remove the note from the localStorage
         deleteNoteFromLocalStorage(idOfNoteToBeDeleted);
-        numberOfNotes--;
 
         //Remove the li element which is clicked
         $(this).remove();
@@ -89,8 +83,6 @@ function main() {
 
         //Put focus back on the notes box
         $('.notes-box').focus();
-
-        console.log("numberOfNotes: " + numberOfNotes);
     });
 
     //Get saved notes from localStorage and display them
