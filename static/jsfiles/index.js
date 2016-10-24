@@ -1,83 +1,109 @@
+//Keep track of how many total notes are there
+numberOfNotes = 0;
+
+//Display saved notes from the localStorage on the page
+function displaySavedNotesFromLocalStorage() {
+    //Get saved notes from localStorage and display them
+    if(localStorage.length != 0) {
+        //Hide the "no notes saved" message
+        $("#no-saved-notes").hide();
+
+        //Iterate over all the keys (note id) in the localStorage and get their values (note body) also
+        for(var i = 0; i < localStorage.length; ++i) {
+            var id = localStorage.key(i);
+            var body = localStorage.getItem(localStorage.key(i));
+
+            //Create a new <li> element, add text post to it and prepend it to the ul list
+            var newLiElement = $('<li>').text(body);
+            newLiElement.attr('id', id);
+            newLiElement.prependTo('.posts');
+        }
+
+        //Set the number of total notes to localStorage length
+        numberOfNotes = localStorage.length;
+    }
+
+    console.log("numberOfNotes: " + numberOfNotes);
+}
+
+//Save the note to localStorage
+function saveNoteToLocalStorage(id, body) {
+    localStorage.setItem(numberOfNotes, body);
+    console.log("numberOfNotes: " + numberOfNotes);
+}
+
+//Delete the note from localStorage
+function deleteNoteFromLocalStorage(id) {
+    localStorage.removeItem(id);
+    console.log("numberOfNotes: " + numberOfNotes);
+}
+
 //Function to run after the document is loaded
-var main = function() {
+function main() {
 
-    //Variable to hold a new html content (innerHTML) to be added to the selected element
-    var html = "";
-
-    /**
-     * @brief This function adds the text present in the notes box to
-     *  the saved notes when the user presses the enter key
-     *
-     * @param An Event object to identify keyup event
-     */
+    //This function adds the text present in the notes box to the saved notes when the user presses the enter key
     $(document).keyup(function(event) {
+        //Check for enter key (code: 13) pressed
         if(event.which === 13) {
-
+            //Hide the "no notes saved" message
             $("#no-saved-notes").hide();
 
             //Get the current text in the notes box
             var post = $('.notes-box').val();
 
-            ////Create a new <li> element, add text post to it and prepend it to the ul list
-            //$('<li>').text(post).prependTo('.posts');
+            //Create a new <li> element, add text post to it and prepend it to the ul list
             var newLiElement = $('<li>').text(post);
+            newLiElement.attr('id', numberOfNotes);
             newLiElement.prependTo('.posts');
 
-            //<li class="list-group-item"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, aliquid.</p>  </li>
-            //html += '<li class="list-group-item">' + post + '</li>';
-            //$(".posts").html(html);
+            //Add the new note in the localStorage
+            saveNoteToLocalStorage(numberOfNotes, post);
+            numberOfNotes++;
 
-            ////Make the notes box empty again
+            //Make the notes box empty again
             $('.notes-box').val('');
 
-            ////Set the counter back to 100
-            $('.counter').text('100');
-
+            //Put focus back on the notes box
             $('.notes-box').focus();
+
+            console.log("numberOfNotes: " + numberOfNotes);
         }
     });
-
-    //When text is typed in the notes box and the user releases the key on the keyboard, this function is called
-    $('.notes-box').keyup(function() {
-        //Get the length of the text entered in the 
-        var postLength = $(this).val().length;
-
-        var charactersLeft = 100 - postLength;
-
-        $('.counter').text(charactersLeft);
-
-        if(charactersLeft < 0) {
-            $('.btn').addClass('disabled'); 
-        }
-        else if(charactersLeft == 100) {
-            $('.btn').addClass('disabled');
-        }
-        else {
-            $('.btn').removeClass('disabled');
-        }
-    });
-
-    $('.btn').addClass('disabled');
-
-    /*if($('.posts').children().length == 0) {
-        html = "No notes saved yet ...";
-        $(".posts").html(html);
-    }*/
-
-    if($('.posts').children().length != 0) {
-        html = "";
-        $(".posts").html(html);
-    }
 
     //Attach an event handler to the specified child element (li, in this case) and not the selector itself
     $('.posts').on('click', 'li', function() {
+        //Get the id of the note clicked
+        var idOfNoteToBeDeleted = $(this).attr("id");
+
+        //Remove the note from the localStorage
+        deleteNoteFromLocalStorage(idOfNoteToBeDeleted);
+        numberOfNotes--;
+
+        //Remove the li element which is clicked
         $(this).remove();
 
+        //If there are no more children left for ul list, then show "no notes saved" message
         if($('.posts').children().length == 0) {
             $("#no-saved-notes").show();
         }
+
+        //Put focus back on the notes box
+        $('.notes-box').focus();
+
+        console.log("numberOfNotes: " + numberOfNotes);
     });
+
+    //Get saved notes from localStorage and display them
+    displaySavedNotesFromLocalStorage();
+}
+
+if(typeof(Storage) !== "undefined") {
+    //localStorage is available
+}
+else {
+    $(".container").remove();
+    $(".storageFailure").text("Sorry! No Web Storage support ...");
 }
 
 //Create a ready event when the DOM has been loaded
-$(document).ready(main);
+$(document).ready(main());
