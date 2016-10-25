@@ -24,6 +24,9 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
     response.render('index');
 });
+app.get('/info', function(request, response) {
+    response.render('info');
+});
 
 //Bind and listen for connections on the specified host and port
 app.listen(app.get('port'), function() {

@@ -37,7 +37,6 @@ function deleteNoteFromLocalStorage(id) {
 
 //Function to run after the document is loaded
 function main() {
-
     //This function adds the text present in the notes box to the saved notes when the user presses the enter key
     $(document).keyup(function(event) {
         //Check for enter key (code: 13) pressed

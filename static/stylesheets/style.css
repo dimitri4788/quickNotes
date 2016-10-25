@@ -2,28 +2,35 @@ html, body {
     font-family: 'Roboto', sans-serif;
     color: #404040;
     background-color: #eee;
+    background-image: url('/images/slashes.gif');*/
 }
 
 .jumbotron {
     background: #9fa8a3;
     color: #173e43;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.jumbotron p {
+    font-style: italic;
+}
+
+.fa {
+    color: #000000;
+}
+
+.fa-1, .social {
+    font-size: 2em;
 }
 
 .container {
     width: 620px;
 }
 
-.button-group {
-    margin-bottom: 20px;
-}
-
-.counter {
-    display: inline;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 10px;
+.form-group, .information {
+    margin-top: 0.5cm;
 }
 
 .posts {
@@ -42,4 +49,8 @@ html, body {
     padding-bottom: 10px;
     margin-bottom: 10px;
     word-wrap: break-word;
+}
+
+.list-group-item {
+    display: list-item;
 }
