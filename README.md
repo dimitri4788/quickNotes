@@ -5,7 +5,7 @@ An application to take quick notes written in Node.js and Express.js.
 
 Website
 ------
-[Click here to use the application]()
+[Click here to use the application](https://takequicknotes.herokuapp.com/)
 
 Running Locally
 ---------------
@@ -23,7 +23,7 @@ Deploying to Heroku
 ```sh
 # Install Heroku CLI Toolbelt: https://toolbelt.heroku.com/
 $ heroku login
-$ heroku create
+$ heroku apps:create [YOURAPPNAME]
 $ git push heroku master
 $ heroku open
 ```
@@ -39,7 +39,9 @@ For more information about using Node.js on Heroku, see these Dev Center article
 
 Screenshot
 ----------
-![](static/images/appImage.png)
+![](static/images/one2.png)
+![](static/images/two2.png)
+![](static/images/three2.png)
 
 Author
 ------
