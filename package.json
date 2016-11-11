@@ -1,7 +1,7 @@
 {
-    "name": "searchjobs",
+    "name": "quicknotes",
     "version": "1.0.0",
-    "description": "Command-line utility to search for jobs based on keywords and location written in Node.js",
+    "description": "An application to take quick notes written in JavaScript (Node.js and Express.js)",
     "author": "Deep Aggarwal <deep.uiuc@gmail.com>",
     "engines": {
         "node": "4.6.0",
@@ -12,21 +12,21 @@
         "start": "node main.js"
     },
     "dependencies": {
-        "request": "2.78.0",
-        "cheerio": "0.22.0"
+        "ejs": "2.4.1",
+        "express": "4.13.3",
+        "serve-favicon": "2.3.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/deep4788/searchJobs"
+        "url": "https://github.com/deep4788/quickNotes"
     },
     "keywords": [
         "node.js",
-        "search",
-        "jobs",
+        "express.js",
+        "quick",
+        "notes",
         "javascript",
-        "find",
-        "command-line",
-        "utility"
+        "ejs"
     ],
     "license": "MIT"
 }
